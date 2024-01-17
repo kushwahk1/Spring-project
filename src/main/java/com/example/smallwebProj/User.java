@@ -2,13 +2,34 @@ package com.example.smallwebProj;
 
 import java.sql.Date;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="student")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
+	  private Integer id;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String name;
 	public String email;
 	public String gender;
 	public String password;
 	public Date birthday;
-	private boolean employed;
+	public boolean employed;
 	public String getName() {
 		return name;
 	}
